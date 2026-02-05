@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Мій Профіль {% endblock %}
+
+{% block main %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="bg-indigo-600 h-32"></div>
+        
+        <div class="px-8 pb-8">
+            <div class="relative flex justify-between items-end -mt-12">
+                <div class="w-24 h-24 bg-gray-200 border-4 border-white rounded-full flex items-center justify-center text-3xl text-gray-400">
+                    <i class="fas fa-user"></i>
+                </div>
+                <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition">
+                    Редагувати
+                </a>
+            </div>
+
+            <div class="mt-6">
+                <h2 class="text-2xl font-bold text-gray-800">{{ user.username }}</h2>
+                <p class="text-gray-500">{{ user.email }}</p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                    <span class="block text-sm text-gray-500">Статус</span>
+                    <span class="font-bold text-indigo-600">Студент-програміст</span>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                    <span class="block text-sm text-gray-500">Дата реєстрації</span>
+                    <span class="font-bold text-gray-800">{{ user.date_joined|date:"d.m.Y" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

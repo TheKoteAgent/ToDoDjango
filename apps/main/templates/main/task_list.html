@@ -8,17 +8,22 @@
 
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         {% for tasks in task %}
+            {% if tasks.user_id == user %}
             <div class="flex items-center p-4 border-b last:border-0 hover:bg-gray-50 transition">
                 <div class="flex-grow">
                     <h3 class="text-lg {% if not tasks.is_active %} line-through text-gray-400 {% else %} text-gray-800 {% endif %}">
                         {{ tasks.title }}
                     </h3>
                 </div>
-
+                <a href="{% url 'main:task_edit' tasks.id %}">Edit</a>
                 <div class="text-sm text-gray-500 italic">
-                    {{ task.created_at|date:"H:i" }}
+                    ||{{ tasks.deadline|date:"d M, Y H:i" }}||
+                </div>
+                <div class="text-sm text-gray-500 italic">
+                    {{ tasks.created_at|date:"H:i" }}
                 </div>
             </div>
+            {% endif %}
         {% empty %}
             <div class="p-10 text-center text-gray-400">
                 Тут ще немає жодного запису.
